@@ -1,0 +1,15 @@
+<template>
+    <lightning-record-edit-form object-api-name={objectapiname} onsuccess={handleSuccess}>
+        <lightning-messages></lightning-messages>
+        <template for:each={clonedFields} for:item="item">
+            <lightning-input-field key={item.key} field-name={item.key} value={item.value} variant="label-stacked"> </lightning-input-field>
+        </template>
+           
+            
+         <lightning-button
+        class="slds-m-top_small"
+        type="submit"
+        label="Create new"></lightning-button>
+  
+    </lightning-record-edit-form>
+</template>

@@ -1,0 +1,34 @@
+<template>
+    <lightning-card title="FieldsToClone" icon-name="custom:custom67">
+        <div class="slds-var-m-horizontal_medium">
+            <template if:true={showSelect}>
+                <p class="slds-var-p-vertical_small">
+                    <lightning-button
+                        label="Clone Advanced"
+                        onclick={handleClickClone}
+                    ></lightning-button>
+                     </p>
+   
+                      
+            <template if:true={objectInfo.data}>
+                <lightning-checkbox-group name="SelectFields"
+                label="Select fields to clone"
+                options={options}
+                value={selectedFields}
+                onchange={handleChange}
+                required></lightning-checkbox-group>
+                      
+            </template>
+        
+            </template>
+
+             <template if:true={showCreateForm}>
+                  <c-form-clone recordid={recordId} fields={selectedFields} objectapiname={objectApiName} oncreated={handleCreated}></c-form-clone>
+            </template>
+             <template if:true={showViewForm}>
+                 <lightning-record-form record-id ={newRecordId} object-api-name={objectApiName} layout-type="Full"></lightning-record-form>
+                 <lightning-button label="Close" onclick={handleCloseViewForm}></lightning-button>
+             </template>
+        </div>
+    </lightning-card>
+</template>
